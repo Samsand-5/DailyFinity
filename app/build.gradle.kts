@@ -48,7 +48,10 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
         // Architectural Components
-        implementation("androidx.lifecycle::lifecycle-viewmodel-ktx:2.4.0")
+    implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    implementation ("androidx.lifecycle:lifecycle-common-java8:2.6.1")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+    implementation ("androidx.activity:activity-ktx:1.7.2")
 
         // Room
         implementation("androidx.room:room-runtime:2.6.1")
@@ -73,9 +76,9 @@ dependencies {
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
         implementation("com.squareup.okhttp3::logging-interceptor:5.0.0-alpha.2")
 
-        // Navigation Components
-    implementation ("androidx.navigation:navigation-fragment-ktx:2.7.7")
-    implementation ("androidx.navigation:navigation-ui-ktx:2.7.7")
+    //Navigation Components
+    implementation ("androidx.navigation:navigation-fragment-ktx:2.6.0")
+    implementation ("androidx.navigation:navigation-ui-ktx:2.6.0")
 
         // Glide
     implementation ("com.github.bumptech.glide:glide:4.13.2")
