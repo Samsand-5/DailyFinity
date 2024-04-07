@@ -1,4 +1,4 @@
-package com.example.dailyfinity.ui.fragments
+package com.example.dailyfinity.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
