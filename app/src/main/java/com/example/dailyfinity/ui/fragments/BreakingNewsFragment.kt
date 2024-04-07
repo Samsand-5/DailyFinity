@@ -1,4 +1,4 @@
-package com.example.dailyfinity.fragments
+package com.example.dailyfinity.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,7 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.dailyfinity.R
 
-class SavedNewsFragment : Fragment() {
+
+class BreakingNewsFragment : Fragment() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +21,7 @@ class SavedNewsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_saved_news, container, false)
+        return inflater.inflate(R.layout.fragment_breaking_news, container, false)
     }
 
 }
