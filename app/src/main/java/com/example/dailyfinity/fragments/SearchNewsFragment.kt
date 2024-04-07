@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.example.dailyfinity.R
 
 
-class SearchNewsFragment : Fragment() {
+class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

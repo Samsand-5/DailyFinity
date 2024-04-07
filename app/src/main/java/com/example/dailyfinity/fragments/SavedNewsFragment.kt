@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.dailyfinity.R
 
-class SavedNewsFragment : Fragment() {
+class SavedNewsFragment : Fragment(R.layout.fragment_saved_news) {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
