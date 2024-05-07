@@ -13,6 +13,7 @@
         android:text="HeadLines"
         android:textSize="30sp"
         android:textStyle="bold"
+        android:textColor="@color/purple"
         />
 
 </FrameLayout>
