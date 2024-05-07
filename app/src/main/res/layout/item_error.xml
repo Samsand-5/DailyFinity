@@ -20,6 +20,11 @@
             android:gravity="center_horizontal"
             android:text="No Internet"
             android:textAlignment="center"/>
+        
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            />
 
     </LinearLayout>
 
