@@ -24,4 +24,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/articleImage" />
 
+    <TextView
+        android:id="@+id/articleTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="TITLE"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/articleImage"
+        app:layout_constraintTop_toTopOf="parent"  />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
