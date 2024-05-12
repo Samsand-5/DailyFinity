@@ -20,6 +20,7 @@ interface NewsApi {
 
     @GET("v2/everything")
     suspend fun searchForNews(
-
+        @Query("q")
+        searchQuery: String
     )
 }
