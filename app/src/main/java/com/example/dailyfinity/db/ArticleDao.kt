@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.dailyfinity.models.Article
+import retrofit2.http.DELETE
 
 @Dao
 interface ArticleDao {
@@ -15,4 +16,7 @@ interface ArticleDao {
 
     @Query("SELECT * FROM articles")
     fun getAllArticles(): LiveData<List<Article>>
+
+    @DELETE
+    suspend fun deleteArticle(article: Article)
 }
