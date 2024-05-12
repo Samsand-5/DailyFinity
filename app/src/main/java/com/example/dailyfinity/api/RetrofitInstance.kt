@@ -1,6 +1,5 @@
 package com.example.dailyfinity.api
 
-import com.example.dailyfinity.db.NewsApi
 import com.example.dailyfinity.util.Constants.Companion.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

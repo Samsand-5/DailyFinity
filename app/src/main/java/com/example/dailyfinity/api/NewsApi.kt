@@ -1,4 +1,4 @@
-package com.example.dailyfinity.db
+package com.example.dailyfinity.api
 
 import com.example.dailyfinity.models.NewsResponse
 import com.example.dailyfinity.util.Constants.Companion.API_KEY
