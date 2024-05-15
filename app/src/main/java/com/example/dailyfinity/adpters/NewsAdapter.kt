@@ -64,6 +64,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
         }
     }
 
+    //external classes to set there own click handling logic for items in the adapter
     fun setOnItemClickListener(listener: (Article) -> Unit) {
         onItemClickListener = listener
     }
