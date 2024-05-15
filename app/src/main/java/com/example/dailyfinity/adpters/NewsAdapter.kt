@@ -25,7 +25,7 @@ class NewsAdapter: RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
         }
 
         override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean {
-            TODO("Not yet implemented")
+            return oldItem == newItem
         }
 
     }
