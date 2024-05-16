@@ -1,10 +1,13 @@
 package com.example.dailyfinity.viewModel
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.dailyfinity.models.NewsResponse
+import com.example.dailyfinity.repository.NewsRepository
 import com.example.dailyfinity.util.Resource
 
-class NewsViewModel {
+class NewsViewModel(app: Application, val newsRepository: NewsRepository): AndroidViewModel(app) {
 
     val headLines: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
     var headLinesPage = 1
