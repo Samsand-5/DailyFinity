@@ -66,4 +66,8 @@ class NewsViewModel(app: Application, val newsRepository: NewsRepository): Andro
     }
 
     fun getFavoriteNews() = newsRepository.getFavoriteNews()
+
+    fun deleteArticle(article: Article) = viewModelScope.launch {
+        newsRepository.upsert(article)
+    }
 }
