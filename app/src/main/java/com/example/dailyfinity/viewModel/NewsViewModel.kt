@@ -64,4 +64,6 @@ class NewsViewModel(app: Application, val newsRepository: NewsRepository): Andro
     fun addToFavorites(article: Article) = viewModelScope.launch {
         newsRepository.upsert(article)
     }
+
+    fun getFavoriteNews() = newsRepository.getFavoriteNews()
 }
