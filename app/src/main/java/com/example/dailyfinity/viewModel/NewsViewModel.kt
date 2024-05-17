@@ -3,9 +3,12 @@ package com.example.dailyfinity.viewModel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import com.example.dailyfinity.models.Article
 import com.example.dailyfinity.models.NewsResponse
 import com.example.dailyfinity.repository.NewsRepository
 import com.example.dailyfinity.util.Resource
+import kotlinx.coroutines.launch
 import retrofit2.Response
 
 class NewsViewModel(app: Application, val newsRepository: NewsRepository): AndroidViewModel(app) {
@@ -56,5 +59,9 @@ class NewsViewModel(app: Application, val newsRepository: NewsRepository): Andro
             }
         }
         return Resource.Error(response.message())
+    }
+
+    fun addToFavorites(article: Article) = viewModelScope.launch {
+        newsRepository.upsert(article)
     }
 }
