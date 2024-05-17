@@ -20,6 +20,7 @@ class NewsViewModel(app: Application, val newsRepository: NewsRepository): Andro
     var newSearchQuery: String? = null
     var oldSearchQuery: String? = null
 
+
     private fun handleHeadLinesResponse(response: Response<NewsResponse>): Resource<NewsResponse>{
         if(response.isSuccessful){
             response.body()?.let {resultResponse->
