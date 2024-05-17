@@ -15,11 +15,10 @@ class NewsViewModel(app: Application, val newsRepository: NewsRepository): Andro
     var headLinesResponse: NewsResponse? = null
 
     val searchNews: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
-    var searchNewsPAge = 1
+    var searchNewsPage = 1
     var searchNewsResponse: NewsResponse? = null
     var newSearchQuery: String? = null
     var oldSearchQuery: String? = null
-
 
     private fun handleHeadLinesResponse(response: Response<NewsResponse>): Resource<NewsResponse>{
         if(response.isSuccessful){
@@ -34,6 +33,26 @@ class NewsViewModel(app: Application, val newsRepository: NewsRepository): Andro
                     oldArticles?.addAll(newArticles)
                 }
                 return Resource.Success(headLinesResponse ?: resultResponse)
+            }
+        }
+        return Resource.Error(response.message())
+    }
+
+    private fun handleSearchNewsResponse(response: Response<NewsResponse>): Resource<NewsResponse>{
+        if(response.isSuccessful){
+            response.body()?.let {resultResponse->
+                if(searchNewsResponse == null || newSearchQuery != null){
+                    searchNewsPage = 1
+                    oldSearchQuery = newSearchQuery
+                    searchNewsResponse = resultResponse
+                }
+                else{
+                    searchNewsPage++
+                    val oldArticles = searchNewsResponse?.articles
+                    val newArticles = resultResponse.articles
+                    oldArticles?.addAll(newArticles)
+                }
+                return Resource.Success(searchNewsResponse ?: resultResponse)
             }
         }
         return Resource.Error(response.message())
