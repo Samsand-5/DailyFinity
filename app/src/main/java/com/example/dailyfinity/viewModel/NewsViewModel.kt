@@ -30,7 +30,9 @@ class NewsViewModel(app: Application, val newsRepository: NewsRepository): Andro
                 else{
                     val oldArticles = headLinesResponse?.articles
                     val newArticles = resultResponse.articles
+                    oldArticles?.addAll(newArticles)
                 }
+                return Resource.Success(headLinesResponse ?: resultResponse)
             }
         }
         else{
