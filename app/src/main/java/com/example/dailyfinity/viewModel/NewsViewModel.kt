@@ -35,9 +35,6 @@ class NewsViewModel(app: Application, val newsRepository: NewsRepository): Andro
                 return Resource.Success(headLinesResponse ?: resultResponse)
             }
         }
-        else{
-
-        }
-        return TODO("Provide the return value")
+        return Resource.Error(response.message())
     }
 }
