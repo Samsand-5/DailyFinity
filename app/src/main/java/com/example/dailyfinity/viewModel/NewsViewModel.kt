@@ -22,7 +22,16 @@ class NewsViewModel(app: Application, val newsRepository: NewsRepository): Andro
 
     private fun handleHeadLinesResponse(response: Response<NewsResponse>): Resource<NewsResponse>{
         if(response.isSuccessful){
-
+            response.body()?.let {resultResponse->
+                headLinesPage++;
+                if(headLinesResponse == null){
+                    headLinesResponse = resultResponse
+                }
+                else{
+                    val oldArticles = headLinesResponse?.articles
+                    val newArticles = resultResponse.articles
+                }
+            }
         }
         else{
 
