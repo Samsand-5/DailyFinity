@@ -93,7 +93,16 @@ class NewsViewModel(app: Application, val newsRepository: NewsRepository): Andro
     private suspend fun heaLinesInternet(countryCode: String){
         headLines.postValue(Resource.Loading())
         try {
-            if()
+            if(internetConnection(this.getApplication())){
+                val response = newsRepository.getHeadLines(countryCode,1)
+                headLines.postValue(handleHeadLinesResponse(response))
+            }
+            else{
+
+            }
+        }
+        catch (t: Throwable){
+
         }
     }
 }
