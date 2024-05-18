@@ -6,13 +6,18 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.dailyfinity.R
+import com.example.dailyfinity.databinding.ActivityNewsBinding
+import com.example.dailyfinity.viewModel.NewsViewModel
 
 class NewsActivity : AppCompatActivity() {
 
     lateinit var navController: NavController
+    lateinit var binding: ActivityNewsBinding
+    lateinit var newsViewModel: NewsViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_news)
+        binding = ActivityNewsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         navController = findNavController(R.id.newsNavHostFragment)
         setupActionBarWithNavController(navController)
