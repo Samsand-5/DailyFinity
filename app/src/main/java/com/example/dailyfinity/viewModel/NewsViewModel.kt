@@ -13,6 +13,7 @@ import com.example.dailyfinity.repository.NewsRepository
 import com.example.dailyfinity.util.Resource
 import kotlinx.coroutines.launch
 import retrofit2.Response
+import java.io.IOException
 import java.util.Locale.IsoCountryCode
 
 class NewsViewModel(app: Application, val newsRepository: NewsRepository): AndroidViewModel(app) {
@@ -90,19 +91,22 @@ class NewsViewModel(app: Application, val newsRepository: NewsRepository): Andro
         }
     }
 
-    private suspend fun heaLinesInternet(countryCode: String){
+    private suspend fun headLinesInternet(countryCode: String){
         headLines.postValue(Resource.Loading())
         try {
             if(internetConnection(this.getApplication())){
-                val response = newsRepository.getHeadLines(countryCode,1)
+                val response = newsRepository.getHeadLines(countryCode,headLinesPage)
                 headLines.postValue(handleHeadLinesResponse(response))
             }
             else{
-
+                headLines.postValue(Resource.Error("No internet"))
             }
         }
         catch (t: Throwable){
-
+            when(t){
+                is IOException -> headLines.postValue(Resource.Error("Unable to connect"))
+                else -> headLines.postValue(Resource.Error("No signal"))
+            }
         }
     }
 }
