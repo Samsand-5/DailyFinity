@@ -8,6 +8,7 @@ import androidx.room.Query
 import com.example.dailyfinity.models.Article
 import retrofit2.http.DELETE
 
+
 @Dao
 interface ArticleDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
