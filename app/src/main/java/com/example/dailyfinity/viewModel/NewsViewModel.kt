@@ -13,6 +13,7 @@ import com.example.dailyfinity.repository.NewsRepository
 import com.example.dailyfinity.util.Resource
 import kotlinx.coroutines.launch
 import retrofit2.Response
+import java.util.Locale.IsoCountryCode
 
 class NewsViewModel(app: Application, val newsRepository: NewsRepository): AndroidViewModel(app) {
 
@@ -26,6 +27,9 @@ class NewsViewModel(app: Application, val newsRepository: NewsRepository): Andro
     var newSearchQuery: String? = null
     var oldSearchQuery: String? = null
 
+    fun getHeadLines(countryCode: String) = viewModelScope.launch {
+
+    }
     private fun handleHeadLinesResponse(response: Response<NewsResponse>): Resource<NewsResponse>{
         if(response.isSuccessful){
             response.body()?.let {resultResponse->
@@ -84,5 +88,9 @@ class NewsViewModel(app: Application, val newsRepository: NewsRepository): Andro
             capabilities?.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) == true -> true
             else -> false
         }
+    }
+
+    private suspend fun heaLinesInternet(countryCode: String){
+
     }
 }
