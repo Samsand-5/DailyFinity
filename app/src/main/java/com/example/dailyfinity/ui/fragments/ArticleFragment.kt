@@ -30,6 +30,10 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
                 loadUrl(it)
             }
         }
+
+        binding.fab.setOnClickListener {
+            newsViewModel.addToFavorites(article)
+        }
     }
 
 }
