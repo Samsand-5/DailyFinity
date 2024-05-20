@@ -41,4 +41,9 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
         binding.paginationProgressBar.visibility = View.INVISIBLE
         isLoading = false
     }
+
+    private fun showProgressBar(){
+        binding.paginationProgressBar.visibility = View.INVISIBLE
+        isLoading = true
+    }
 }
