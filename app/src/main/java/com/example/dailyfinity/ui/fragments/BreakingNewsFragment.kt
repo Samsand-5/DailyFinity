@@ -46,4 +46,11 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
         binding.paginationProgressBar.visibility = View.INVISIBLE
         isLoading = true
     }
+
+    private fun hideErrorMessage(){
+        itemHeadlinesError.visibility = View.INVISIBLE
+        isError = false
+    }
+
+
 }
