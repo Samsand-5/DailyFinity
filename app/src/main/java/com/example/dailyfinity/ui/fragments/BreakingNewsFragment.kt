@@ -31,4 +31,9 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
 
         newsViewModel = (activity as NewsActivity).newsViewModel
     }
+
+    val isError = false
+    val isLoading = false
+    val isLastPage = false
+    val isScrolling = false
 }
