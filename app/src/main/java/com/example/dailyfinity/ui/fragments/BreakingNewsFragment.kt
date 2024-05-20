@@ -52,5 +52,8 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
         isError = false
     }
 
-
+    private fun showErrorMessage(){
+        itemHeadlinesError.visibility = View.VISIBLE
+        isError = true
+    }
 }
