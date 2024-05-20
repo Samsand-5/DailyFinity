@@ -12,6 +12,7 @@ import com.example.dailyfinity.R
 import com.example.dailyfinity.adapters.NewsAdapter
 import com.example.dailyfinity.databinding.FragmentArticleBinding
 import com.example.dailyfinity.databinding.FragmentBreakingNewsBinding
+import com.example.dailyfinity.ui.NewsActivity
 import com.example.dailyfinity.viewModel.NewsViewModel
 
 
@@ -27,5 +28,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentBreakingNewsBinding.bind(view)
+
+        newsViewModel = (activity as NewsActivity).newsViewModel
     }
 }
