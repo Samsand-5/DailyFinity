@@ -10,5 +10,4 @@ class NewsViewModelProviderFactory(val app: Application, val newsRepository: New
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return NewsViewModel(app,newsRepository) as T
     }
-
 }
