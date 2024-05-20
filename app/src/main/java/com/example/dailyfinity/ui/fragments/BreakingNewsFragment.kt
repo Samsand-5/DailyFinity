@@ -10,6 +10,8 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import com.example.dailyfinity.R
 import com.example.dailyfinity.adapters.NewsAdapter
+import com.example.dailyfinity.databinding.FragmentArticleBinding
+import com.example.dailyfinity.databinding.FragmentBreakingNewsBinding
 import com.example.dailyfinity.viewModel.NewsViewModel
 
 
@@ -20,5 +22,10 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
     lateinit var retryButton: Button
     lateinit var errorText: TextView
     lateinit var itemHeadlinesError: CardView
+    lateinit var binding: FragmentBreakingNewsBinding
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentBreakingNewsBinding.bind(view)
+    }
 }
