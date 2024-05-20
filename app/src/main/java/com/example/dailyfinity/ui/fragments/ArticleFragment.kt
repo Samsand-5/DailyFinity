@@ -21,6 +21,7 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
         binding = FragmentArticleBinding.bind(view)
 
         newsViewModel = (activity as NewsActivity).newsViewModel
+        val article = args.article
     }
 
 }
