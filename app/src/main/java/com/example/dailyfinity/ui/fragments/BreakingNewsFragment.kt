@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.recyclerview.widget.RecyclerView
 import com.example.dailyfinity.R
 import com.example.dailyfinity.adapters.NewsAdapter
 import com.example.dailyfinity.databinding.FragmentArticleBinding
@@ -56,5 +57,14 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
         itemHeadlinesError.visibility = View.VISIBLE
         errorText.text = message
         isError = true
+    }
+
+    val scrollListener: object: RecyclerView.OnScrollListener(){
+        override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+            super.onScrollStateChanged(recyclerView, newState)
+        }
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            super.onScrolled(recyclerView, dx, dy)
+        }
     }
 }
