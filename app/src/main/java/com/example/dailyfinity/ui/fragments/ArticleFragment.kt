@@ -2,6 +2,7 @@ package com.example.dailyfinity.ui.fragments
 
 import android.os.Bundle
 import android.view.View
+import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.example.dailyfinity.R
@@ -22,6 +23,13 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
 
         newsViewModel = (activity as NewsActivity).newsViewModel
         val article = args.article
+
+        binding.webView.apply {
+            webViewClient = WebViewClient()
+            article.url?.let {
+                loadUrl(it)
+            }
+        }
     }
 
 }
