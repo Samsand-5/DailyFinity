@@ -9,6 +9,7 @@ import com.example.dailyfinity.R
 import com.example.dailyfinity.databinding.FragmentArticleBinding
 import com.example.dailyfinity.ui.NewsActivity
 import com.example.dailyfinity.viewModel.NewsViewModel
+import com.google.android.material.snackbar.Snackbar
 
 
 class ArticleFragment : Fragment(R.layout.fragment_article) {
@@ -33,6 +34,7 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
 
         binding.fab.setOnClickListener {
             newsViewModel.addToFavorites(article)
+            Snackbar.make(view,"Added to favorites",Snackbar.LENGTH_SHORT).show()
         }
     }
 
