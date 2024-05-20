@@ -32,8 +32,13 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
         newsViewModel = (activity as NewsActivity).newsViewModel
     }
 
-    val isError = false
-    val isLoading = false
-    val isLastPage = false
-    val isScrolling = false
+    var isError = false
+    var isLoading = false
+    var isLastPage = false
+    var isScrolling = false
+
+    private fun hideProgressBar(){
+        binding.paginationProgressBar.visibility = View.INVISIBLE
+        isLoading = false
+    }
 }
