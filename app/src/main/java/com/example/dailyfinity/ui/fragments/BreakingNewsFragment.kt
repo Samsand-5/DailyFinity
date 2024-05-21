@@ -42,6 +42,8 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
         retryButton = view.findViewById(R.id.retryButton)
         errorText = view.findViewById(R.id.errorText)
 
+        newsViewModel = (activity as NewsActivity).newsViewModel
+        setUpHeadLinesRecycler()
     }
 
     var isError = false
