@@ -15,6 +15,7 @@ import com.example.dailyfinity.adapters.NewsAdapter
 import com.example.dailyfinity.databinding.FragmentArticleBinding
 import com.example.dailyfinity.databinding.FragmentBreakingNewsBinding
 import com.example.dailyfinity.ui.NewsActivity
+import com.example.dailyfinity.util.Constants
 import com.example.dailyfinity.viewModel.NewsViewModel
 
 
@@ -72,6 +73,8 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
             val isNoError = !isError
             val isNotLoadingAndNotLastPage = !isLoading && !isLastPage
             val isAtLastItem = firstVisibleItemPosition + visibleItemCount >= totalItemCount
+            val isNotAtBeginning = firstVisibleItemPosition >= 0
+            val isTotalMoreThanVisible = totalItemCount >= Constants.QUERY_PAGE_SIZE
         }
 
         override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
