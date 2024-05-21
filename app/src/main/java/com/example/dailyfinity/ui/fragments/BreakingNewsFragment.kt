@@ -1,5 +1,6 @@
 package com.example.dailyfinity.ui.fragments
 
+import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.AbsListView
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -69,7 +71,10 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                     }
                 }
                 is Resource.Error<*> -> {
-
+                    hideProgressBar()
+                    response.message?.let {
+                        Toast.makeText(activity,"Sorry Error: $it",Toast.LENGTH_SHORT).show()
+                    }
                 }
                 is Resource.Loading<*> -> {
 
