@@ -38,6 +38,10 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
 
         val inflater = requireContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val view: View = inflater.inflate(R.layout.item_error,null)
+
+        retryButton = view.findViewById(R.id.retryButton)
+        errorText = view.findViewById(R.id.errorText)
+
     }
 
     var isError = false
