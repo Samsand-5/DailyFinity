@@ -63,7 +63,9 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                     response.data?.let { newsResponse ->
                         newsAdapter.differ.submitList(newsResponse.articles.toList())
                         val totalPages = newsResponse.totalResults / Constants.QUERY_PAGE_SIZE + 2
-
+                        if(isLastPage){
+                            binding.recyclerHeadlines.setPadding(0,0,0,0)
+                        }
                     }
                 }
                 is Resource.Error<*> -> {
