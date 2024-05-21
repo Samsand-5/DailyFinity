@@ -78,7 +78,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                     }
                 }
                 is Resource.Loading<*> -> {
-
+                    showProgressBar()
                 }
             }
         })
