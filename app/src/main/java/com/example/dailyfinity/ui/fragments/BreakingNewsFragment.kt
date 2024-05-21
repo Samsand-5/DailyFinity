@@ -65,6 +65,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
 
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
             super.onScrolled(recyclerView, dx, dy)
+
             val layoutManager = recyclerView.layoutManager as LinearLayoutManager
             val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
             val visibleItemCount = layoutManager.childCount
@@ -75,6 +76,10 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
             val isAtLastItem = firstVisibleItemPosition + visibleItemCount >= totalItemCount
             val isNotAtBeginning = firstVisibleItemPosition >= 0
             val isTotalMoreThanVisible = totalItemCount >= Constants.QUERY_PAGE_SIZE
+            val shouldPaginate = isNoError && isNotLoadingAndNotLastPage && isAtLastItem
+                    && isNotAtBeginning && isTotalMoreThanVisible && isScrolling
+
+
         }
 
         override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
