@@ -10,6 +10,7 @@ import android.widget.AbsListView
 import android.widget.Button
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dailyfinity.R
@@ -44,6 +45,13 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
 
         newsViewModel = (activity as NewsActivity).newsViewModel
         setUpHeadLinesRecycler()
+
+        newsAdapter.setOnItemClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("article",it)
+            }
+            findNavController().navigate(R.id.action_breakingNewsFragment_to_articleFragment,bundle)
+        }
     }
 
     var isError = false
