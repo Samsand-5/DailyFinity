@@ -1,5 +1,6 @@
 package com.example.dailyfinity.ui.fragments
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -33,7 +34,10 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentBreakingNewsBinding.bind(view)
 
-        newsViewModel = (activity as NewsActivity).newsViewModel
+        itemHeadlinesError = view.findViewById(R.id.itemHeadlinesError)
+
+        val inflater = requireContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val view: View = inflater.inflate(R.layout.item_error,null)
     }
 
     var isError = false
