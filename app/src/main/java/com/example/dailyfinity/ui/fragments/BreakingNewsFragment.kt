@@ -10,6 +10,7 @@ import android.widget.AbsListView
 import android.widget.Button
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +20,7 @@ import com.example.dailyfinity.databinding.FragmentArticleBinding
 import com.example.dailyfinity.databinding.FragmentBreakingNewsBinding
 import com.example.dailyfinity.ui.NewsActivity
 import com.example.dailyfinity.util.Constants
+import com.example.dailyfinity.util.Resource
 import com.example.dailyfinity.viewModel.NewsViewModel
 
 
@@ -52,6 +54,22 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
             }
             findNavController().navigate(R.id.action_breakingNewsFragment_to_articleFragment,bundle)
         }
+
+        newsViewModel.headLines.observe(viewLifecycleOwner, Observer { response ->
+            when(response){
+                is Resource.Success<*> -> {
+                    hideProgressBar()
+                    hideErrorMessage()
+
+                }
+                is Resource.Error<*> -> {
+
+                }
+                is Resource.Loading<*> -> {
+
+                }
+            }
+        })
     }
 
     var isError = false
