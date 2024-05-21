@@ -68,6 +68,9 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
             val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
             val visibleItemCount = layoutManager.childCount
             val totalItemCount = layoutManager.itemCount
+
+            val isNoError = !isError
+            val isNotLoadingAndNotLastPage = !isLoading && !isLastPage
         }
 
         override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
