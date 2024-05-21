@@ -82,6 +82,10 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                 }
             }
         })
+
+        retryButton.setOnClickListener {
+            newsViewModel.getHeadLines("us")
+        }
     }
 
     var isError = false
