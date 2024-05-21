@@ -94,4 +94,13 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
             }
         }
     }
+
+    private fun setUpHeadLinesRecycler(){
+        newsAdapter = NewsAdapter()
+        binding.recyclerHeadlines.apply {
+            adapter = newsAdapter
+            layoutManager = LinearLayoutManager(activity)
+            addOnScrollListener(this@BreakingNewsFragment.scrollListener)
+        }
+    }
 }
