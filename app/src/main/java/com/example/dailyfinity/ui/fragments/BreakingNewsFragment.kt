@@ -79,7 +79,10 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
             val shouldPaginate = isNoError && isNotLoadingAndNotLastPage && isAtLastItem
                     && isNotAtBeginning && isTotalMoreThanVisible && isScrolling
 
-
+            if(shouldPaginate){
+                newsViewModel.getHeadLines("us")
+                isScrolling = false
+            }
         }
 
         override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
