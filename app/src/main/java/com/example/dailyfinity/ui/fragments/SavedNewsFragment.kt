@@ -54,7 +54,12 @@ class SavedNewsFragment : Fragment(R.layout.fragment_saved_news) {
                 val position = viewHolder.adapterPosition
                 val article = newsAdapter.differ.currentList[position]
                 newsViewModel.deleteArticle(article)
-                Snackbar.make(view,"Removed from favorites",Snackbar.LENGTH_LONG).show()
+                Snackbar.make(view,"Removed from favorites",Snackbar.LENGTH_LONG).apply {
+                    setAction("Undo"){
+                        newsViewModel.addToFavorites(article)
+                    }
+                    show()
+                }
             }
 
         }
