@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.dailyfinity.R
 import com.example.dailyfinity.adapters.NewsAdapter
 import com.example.dailyfinity.databinding.FragmentBreakingNewsBinding
@@ -31,13 +32,28 @@ class SavedNewsFragment : Fragment(R.layout.fragment_saved_news) {
 
         newsAdapter.setOnItemClickListener {
             val bundle = Bundle().apply {
-                putSerializable("article",it)
+                putSerializable("article", it)
             }
-            findNavController().navigate(R.id.action_savedNewsFragment_to_articleFragment,bundle)
+            findNavController().navigate(R.id.action_savedNewsFragment_to_articleFragment, bundle)
         }
 
-        val itemTouchHelperCallBack = object : ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP or ItemTouchHelper.DOWN,
-            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT)
+        val itemTouchHelperCallBack = object : ItemTouchHelper.SimpleCallback(
+            ItemTouchHelper.UP or ItemTouchHelper.DOWN,
+            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+        ){
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                TODO("Not yet implemented")
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                TODO("Not yet implemented")
+            }
+
+        }
     }
 
     private fun setUpFavoritesRecycler(){
