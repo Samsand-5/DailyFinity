@@ -27,7 +27,7 @@ class SavedNewsFragment : Fragment(R.layout.fragment_saved_news) {
         binding = FragmentSavedNewsBinding.bind(view)
 
         newsViewModel = (activity as NewsActivity).newsViewModel
-        setUpRecyclerView()
+        setUpFavoritesRecycler()
 
         newsAdapter.setOnItemClickListener {
             val bundle = Bundle().apply {
@@ -35,10 +35,12 @@ class SavedNewsFragment : Fragment(R.layout.fragment_saved_news) {
             }
             findNavController().navigate(R.id.action_savedNewsFragment_to_articleFragment,bundle)
         }
+
+        val itemTouchHelperCallBack = object : ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP or ItemTouchHelper.DOWN,
+            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT)
     }
 
-    val itemTouchHelperCallBack = object : ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP,ItemTouchHelper.DOWN)
-    private fun setUpRecyclerView(){
+    private fun setUpFavoritesRecycler(){
         newsAdapter = NewsAdapter()
         binding.recyclerFavourites.apply {
             adapter = newsAdapter
