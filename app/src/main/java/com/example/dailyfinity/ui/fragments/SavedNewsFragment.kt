@@ -46,11 +46,12 @@ class SavedNewsFragment : Fragment(R.layout.fragment_saved_news) {
                 viewHolder: RecyclerView.ViewHolder,
                 target: RecyclerView.ViewHolder
             ): Boolean {
-                TODO("Not yet implemented")
+                return true
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                TODO("Not yet implemented")
+                val position = viewHolder.adapterPosition
+                val article = newsAdapter.differ.currentList[position]
             }
 
         }
