@@ -16,6 +16,7 @@ import com.example.dailyfinity.databinding.FragmentBreakingNewsBinding
 import com.example.dailyfinity.databinding.FragmentSavedNewsBinding
 import com.example.dailyfinity.ui.NewsActivity
 import com.example.dailyfinity.viewModel.NewsViewModel
+import com.google.android.material.snackbar.Snackbar
 
 class SavedNewsFragment : Fragment(R.layout.fragment_saved_news) {
 
@@ -52,6 +53,8 @@ class SavedNewsFragment : Fragment(R.layout.fragment_saved_news) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
                 val article = newsAdapter.differ.currentList[position]
+                newsViewModel.deleteArticle(article)
+                Snackbar.make(view,"Removed from favorites",Snackbar.LENGTH_LONG).show()
             }
 
         }
