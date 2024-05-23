@@ -65,6 +65,9 @@ class SavedNewsFragment : Fragment(R.layout.fragment_saved_news) {
         ItemTouchHelper(itemTouchHelperCallBack).apply {
             attachToRecyclerView(binding.recyclerFavourites)
         }
+        newsViewModel.getFavoriteNews().observe(viewLifecycleOwner) { articles ->
+            newsAdapter.differ.submitList(articles)
+        }
     }
 
     private fun setUpFavoritesRecycler(){
