@@ -61,7 +61,9 @@ class SavedNewsFragment : Fragment(R.layout.fragment_saved_news) {
                     show()
                 }
             }
-
+        }
+        ItemTouchHelper(itemTouchHelperCallBack).apply {
+            attachToRecyclerView(binding.recyclerFavourites)
         }
     }
 
