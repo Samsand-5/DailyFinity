@@ -16,10 +16,10 @@
         android:theme="@style/Theme.DailyFinity"
         tools:targetApi="31">
         <activity
-            android:name=".ui.SplashScreen"
-            android:exported="false" />
-        <activity
             android:name=".ui.NewsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
