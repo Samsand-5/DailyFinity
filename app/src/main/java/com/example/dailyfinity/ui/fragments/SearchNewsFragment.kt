@@ -6,20 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.dailyfinity.R
+import com.example.dailyfinity.adapters.NewsAdapter
+import com.example.dailyfinity.databinding.FragmentSavedNewsBinding
+import com.example.dailyfinity.databinding.FragmentSearchNewsBinding
+import com.example.dailyfinity.viewModel.NewsViewModel
 
 
 class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search_news, container, false)
-    }
+    lateinit var newsViewModel: NewsViewModel
+    lateinit var newsAdapter: NewsAdapter
+    lateinit var binding: FragmentSearchNewsBinding
 
 }
