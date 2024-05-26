@@ -31,4 +31,5 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
 
         newsViewModel = (activity as NewsActivity).newsViewModel
     }
+
 }
