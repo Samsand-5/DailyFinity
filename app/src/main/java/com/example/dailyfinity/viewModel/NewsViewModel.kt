@@ -122,7 +122,7 @@ class NewsViewModel(app: Application, val newsRepository: NewsRepository): Andro
         searchNews.postValue(Resource.Loading())
         try {
             if(internetConnection(this.getApplication())){
-                val response = newsRepository.getHeadLines(searchQuery,searchNewsPage)
+                val response = newsRepository.searchNews(searchQuery,searchNewsPage)
                 searchNews.postValue(handleSearchNewsResponse(response))
             }
             else{
