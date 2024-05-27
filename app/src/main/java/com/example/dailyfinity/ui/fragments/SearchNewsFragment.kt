@@ -88,7 +88,7 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
                     && isNotAtBeginning && isTotalMoreThanVisible && isScrolling
 
             if(shouldPaginate){
-                newsViewModel.searchNews("us")
+                newsViewModel.searchNews(binding.searchEdit.text.toString())
                 isScrolling = false
             }
         }
