@@ -20,9 +20,11 @@ import com.example.dailyfinity.databinding.FragmentSavedNewsBinding
 import com.example.dailyfinity.databinding.FragmentSearchNewsBinding
 import com.example.dailyfinity.ui.NewsActivity
 import com.example.dailyfinity.util.Constants
+import com.example.dailyfinity.util.Constants.Companion.SEARCH_NEWS_TIME_DELAY
 import com.example.dailyfinity.viewModel.NewsViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 
@@ -61,7 +63,12 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
         binding.searchEdit.addTextChangedListener {editable ->
             job?.cancel()
             job = MainScope().launch {
-
+                delay(SEARCH_NEWS_TIME_DELAY)
+                editable?.let {
+                    if(editable.toString().isNotBlank()){
+                        newsViewModel.searchNews(editable.toString())
+                    }
+                }
             }
         }
     }
