@@ -10,6 +10,7 @@ import android.widget.AbsListView
 import android.widget.Button
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dailyfinity.R
@@ -34,13 +35,23 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentSearchNewsBinding.bind(view)
 
-       /* itemSearchError = view.findViewById(R.id.itemSearchError)
+        itemSearchError = view.findViewById(R.id.itemSearchError)
 
         val inflater = requireContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val view: View = inflater.inflate(R.layout.item_error,null)
 
         retryButton = view.findViewById(R.id.retryButton)
-        errorText = view.findViewById(R.id.errorText) */
+        errorText = view.findViewById(R.id.errorText)
+
+        newsViewModel = (activity as NewsActivity).newsViewModel
+        setUpSearchRecycler()
+
+        newsAdapter.setOnItemClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("article",it)
+            }
+            findNavController().navigate(R.id.action_searchNewsFragment_to_articleFragment,bundle)
+        }
     }
 
     var isError = false
