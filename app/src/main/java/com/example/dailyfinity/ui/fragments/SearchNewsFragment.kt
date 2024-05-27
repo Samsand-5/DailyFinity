@@ -107,6 +107,9 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
             if(binding.searchEdit.text.toString().isNotEmpty()){
                 newsViewModel.searchNews(binding.searchEdit.text.toString())
             }
+            else{
+                hideErrorMessage()
+            }
         }
     }
 
