@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dailyfinity.R
+import kotlinx.coroutines.*
 import com.example.dailyfinity.adapters.NewsAdapter
 import com.example.dailyfinity.databinding.FragmentSavedNewsBinding
 import com.example.dailyfinity.databinding.FragmentSearchNewsBinding
@@ -60,12 +61,12 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
         }
 
         var job: Job? = null
-        binding.searchEdit.addTextChangedListener {editable ->
+        binding.searchEdit.addTextChangedListener { editable ->
             job?.cancel()
             job = MainScope().launch {
                 delay(SEARCH_NEWS_TIME_DELAY)
                 editable?.let {
-                    if(editable.toString().isNotBlank()){
+                    if(editable.toString().isNotEmpty()){
                         newsViewModel.searchNews(editable.toString())
                     }
                 }
