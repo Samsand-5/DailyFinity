@@ -10,6 +10,7 @@ import android.widget.AbsListView
 import android.widget.Button
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,6 +21,7 @@ import com.example.dailyfinity.databinding.FragmentSearchNewsBinding
 import com.example.dailyfinity.ui.NewsActivity
 import com.example.dailyfinity.util.Constants
 import com.example.dailyfinity.viewModel.NewsViewModel
+import kotlinx.coroutines.Job
 
 
 class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
@@ -51,6 +53,11 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
                 putSerializable("article",it)
             }
             findNavController().navigate(R.id.action_searchNewsFragment_to_articleFragment,bundle)
+        }
+
+        var job: Job? = null
+        binding.searchEdit.addTextChangedListener {editable ->
+
         }
     }
 
