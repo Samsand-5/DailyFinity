@@ -88,7 +88,7 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
                     && isNotAtBeginning && isTotalMoreThanVisible && isScrolling
 
             if(shouldPaginate){
-                newsViewModel.getHeadLines("us")
+                newsViewModel.searchNews("us")
                 isScrolling = false
             }
         }
