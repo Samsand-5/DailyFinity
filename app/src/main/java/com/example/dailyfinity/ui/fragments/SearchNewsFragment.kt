@@ -101,4 +101,13 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
             }
         }
     }
+
+    private fun setUpSearchRecycler(){
+        newsAdapter = NewsAdapter()
+        binding.recyclerSearch.apply {
+            adapter = newsAdapter
+            layoutManager = LinearLayoutManager(activity)
+            addOnScrollListener(this@SearchNewsFragment.scrollListener)
+        }
+    }
 }
