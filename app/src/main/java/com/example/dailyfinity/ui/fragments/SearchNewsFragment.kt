@@ -22,6 +22,8 @@ import com.example.dailyfinity.ui.NewsActivity
 import com.example.dailyfinity.util.Constants
 import com.example.dailyfinity.viewModel.NewsViewModel
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 
 
 class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
@@ -57,7 +59,10 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
 
         var job: Job? = null
         binding.searchEdit.addTextChangedListener {editable ->
+            job?.cancel()
+            job = MainScope().launch {
 
+            }
         }
     }
 
