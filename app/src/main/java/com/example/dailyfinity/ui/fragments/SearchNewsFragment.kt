@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.AbsListView
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
@@ -16,12 +17,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dailyfinity.R
 import kotlinx.coroutines.*
+import androidx.lifecycle.Observer
 import com.example.dailyfinity.adapters.NewsAdapter
 import com.example.dailyfinity.databinding.FragmentSavedNewsBinding
 import com.example.dailyfinity.databinding.FragmentSearchNewsBinding
 import com.example.dailyfinity.ui.NewsActivity
 import com.example.dailyfinity.util.Constants
 import com.example.dailyfinity.util.Constants.Companion.SEARCH_NEWS_TIME_DELAY
+import com.example.dailyfinity.util.Resource
 import com.example.dailyfinity.viewModel.NewsViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
@@ -72,6 +75,33 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
                 }
             }
         }
+
+        newsViewModel.headLines.observe(viewLifecycleOwner, Observer { response ->
+            when(response){
+                is Resource.Success<*> -> {
+                    hideProgressBar()
+                    hideErrorMessage()
+                    response.data?.let { newsResponse ->
+                        newsAdapter.differ.submitList(newsResponse.articles.toList())
+                        val totalPages = newsResponse.totalResults / Constants.QUERY_PAGE_SIZE + 2
+                        isLastPage = newsViewModel.searchNewsPage == totalPages
+                        if(isLastPage){
+                            binding.recyclerSearch.setPadding(0,0,0,0)
+                        }
+                    }
+                }
+                is Resource.Error<*> -> {
+                    hideProgressBar()
+                    response.message?.let {
+                        Toast.makeText(activity,"Sorry Error: $it", Toast.LENGTH_SHORT).show()
+                        showErrorMessage(it)
+                    }
+                }
+                is Resource.Loading<*> -> {
+                    showProgressBar()
+                }
+            }
+        })
     }
 
     var isError = false
